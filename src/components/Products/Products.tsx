@@ -3,10 +3,10 @@ import productArray from "../../utils/productArray";
 
 type Props = {
     current: number;
-    addProductToCart: (price: number) => void;
+    buyButton: (price: number) => void;
 };
 
-const Products = ({ addProductToCart, current }: Props) => {
+const Products = ({ buyButton, current }: Props) => {
     return (
         <>
             <div
@@ -16,30 +16,20 @@ const Products = ({ addProductToCart, current }: Props) => {
                 }}
             >
                 {productArray.map((product) => (
-                    <div style={{ margin: "40px" }}>
+                    <div key={product.id} style={{ margin: "40px" }}>
                         <div>
                             <h4>{product.title}</h4>
                         </div>
                         <div>{product.description}</div>
                         <div style={{ margin: "20px" }}>
-                            {currentsArray[current].title}: {""}
-                            <input
-                                style={{
-                                    border: "none",
-                                    textAlign: "left",
-                                    fontSize: "15px",
-                                    width: "50px",
-                                }}
-                                type="text"
-                                value={Math.round(
-                                    product.priceUSD *
-                                        currentsArray[current].value
-                                )}
-                            />
-                        </div>
+                            {currentsArray[current].title}: {""}{" "}
+                            {Math.round(
+                                product.priceUSD * currentsArray[current].value
+                            )}
+                        </div>   
                         <button
                             key={product.id}
-                            onClick={() => addProductToCart(product.id)}
+                            onClick={() => buyButton(product.id)}
                         >
                             Buy
                         </button>

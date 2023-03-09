@@ -4,19 +4,14 @@ import TotalCount from "../../components/TotalCount/TotalCount";
 
 type Props = {
     currentChange: (item: any) => void;
-    productsInCart: {
+    totalCount: {
         [id: number]: number;
     };
     current: number;
-    addProductToCart: (price: number) => void;
+    buyButton: (price: number) => void;
 };
 
-const Task2 = ({
-    addProductToCart,
-    currentChange,
-    productsInCart,
-    current,
-}: Props) => {
+const Task2 = ({ buyButton, currentChange, totalCount, current }: Props) => {
     return (
         <>
             <div
@@ -29,11 +24,8 @@ const Task2 = ({
             >
                 <h1>Our shop page</h1>
                 <Buttons currentChange={currentChange} />
-                <Products
-                    current={current}
-                    addProductToCart={addProductToCart}
-                />
-                <TotalCount current={current} productsInCart={productsInCart} />
+                <Products current={current} buyButton={buyButton} />
+                <TotalCount current={current} totalCount={totalCount} />
             </div>
         </>
     );

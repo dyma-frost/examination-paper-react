@@ -3,7 +3,7 @@ import productArray, { getProductObject } from "../../utils/productArray";
 
 type Props = {
     current: number;
-    productsInCart: {
+    totalCount: {
         [id: number]: number;
     };
     productObject?: {
@@ -12,29 +12,22 @@ type Props = {
 };
 
 const TotalCount = ({
-    productsInCart,
+    totalCount,
     productObject = getProductObject(productArray),
-    current }: Props) => {
-    
+    current,
+}: Props) => {
     return (
         <>
             <div>
                 Total:{" "}
-                {/* {Object.keys(productArray).reduce(
+                {Object.keys(totalCount).reduce(
                     (total, productId) =>
                         total +
                         Math.round(
-                            productArray[parseInt(productId)].priceUSD *
+                            productObject[parseInt(productId)].priceUSD *
+                                totalCount[parseInt(productId)] *
                                 currentsArray[current].value
                         ),
-                    0
-                )} */}
-                {Object.keys(productsInCart).reduce(
-                    (total, productId) =>
-                        total +
-                        Math.round(
-                        productObject[parseInt(productId)].priceUSD *
-                            productsInCart[parseInt(productId)] * currentsArray[current].value),
                     0
                 )}
             </div>

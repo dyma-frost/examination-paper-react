@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 type Props = {};
 
-
 const Task1 = (props: Props) => {
     let count = [
         {

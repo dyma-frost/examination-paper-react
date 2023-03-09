@@ -6,7 +6,7 @@ import Task2 from "../Pages/Task2/Task2";
 
 type Props = {};
 
-type ProductsInCart = {
+type TotalCount = {
     [id: number]: number;
 };
 
@@ -16,14 +16,14 @@ const App = (props: Props) => {
         setCount(() => item.id - 1);
     };
 
-    const [productsInCart, setProductsInCart] = useState<ProductsInCart>({
+    const [totalCount, setTotalCount] = useState<TotalCount>({
         1: 0,
         2: 0,
         3: 0,
     });
 
-    const addProductToCart = (id: number) => {
-        setProductsInCart((prevState) => ({
+    const buyButton = (id: number) => {
+        setTotalCount((prevState) => ({
             ...prevState,
             [id]: prevState[id] + 1,
         }));
@@ -41,8 +41,8 @@ const App = (props: Props) => {
                         <Task2
                             currentChange={currentChange}
                             current={current}
-                            productsInCart={productsInCart}
-                            addProductToCart={addProductToCart}
+                            totalCount={totalCount}
+                            buyButton={buyButton}
                         />
                     }
                 />
